@@ -1,0 +1,80 @@
+server:
+  port: 8080
+  forward-headers-strategy: FRAMEWORK
+  undertow:
+    io-threads: 2
+    worker-threads: 36
+    buffer-size: 1024
+    directBuffers: true
+  servlet:
+    session:
+      timeout: 86400
+
+spring:
+  transaction:
+    rollback-on-commit-failure: true
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    #MySql配置
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://rm-bp1k160qpstc9hojzto.mysql.rds.aliyuncs.com:3306/hotel?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&allowMultiQueries=true
+    username: root
+    password: Cs5721__
+  thymeleaf:
+    mode: HTML5
+    cache: false
+    prefix: classpath:/templates/
+    encoding: UTF-8
+    suffix: .html
+    check-template-location: false
+  servlet:
+    multipart:
+      max-file-size: 2000MB
+      max-request-size: 2000MB
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: com.example.library.entity
+  configLocation: classpath:mybatis-config.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+logging:
+  level:
+    org:
+      springframework:
+        boot:
+          autoconfigure: error
+        web: DEBUG
+    com:
+      fasterxml:
+        jackson: DEBUG
+  file:
+    name: ./logs/log.log
+#        web:
+#          trace
+
+application:
+  formatted-version: 1.0.0
+
+shiro:
+  userNativeSessionManager: true
+
+
+mail:
+  host: smtp.exmail.qq.com
+  from: 1483503963@qq.com
+  user: 1483503963@qq.com
+  pass: 89gr@@39
+  port: 465
+  sslEnable: true
+  socketFactoryClass: javax.net.ssl.SSLSocketFactory
+  socketFactoryFallback: true
+  socketFactoryPort: 465
+
+
