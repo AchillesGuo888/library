@@ -6,9 +6,9 @@
   <context id="DB2Tables" targetRuntime="MyBatis3">
     <!-- JDBC configuration information -->
     <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-      connectionURL="jdbc:mysql://rm-bp1k160qpstc9hojzto.mysql.rds.aliyuncs.com:3306/hotel"
+      connectionURL="jdbc:mysql://localhost:3306/Library"
       userId="root"
-      password="Cs5721__"/>
+      password="123456"/>
     <javaTypeResolver type="org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl">
       <property name="useJSR310Types" value="true"/>
     </javaTypeResolver>
@@ -23,7 +23,7 @@
       targetProject="src/main/java"/>
 
     <!-- Specify the tables to be generated -->
-    <table tableName="user_points">
+    <table tableName="User_Info">
       <generatedKey column="id" sqlStatement="MYSQL" identity="true"/>
     </table>
   </context>
