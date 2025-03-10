@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class JwtUtil {
 
-  private final static String SECRET_KEY = "2024_CS5721"; // private key
+  private final static String SECRET_KEY = "2024_CS5722"; // private key
   private final Map<String, Date> tokenBlacklist = new ConcurrentHashMap<>(); // black_list
 
   private final static int USER_EXPIRE = 600000;

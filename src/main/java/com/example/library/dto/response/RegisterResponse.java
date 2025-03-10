@@ -16,4 +16,7 @@ public class RegisterResponse extends BaseObject {
   @ApiModelProperty("token")
   public String accessToken;
 
+  @ApiModelProperty("userName")
+  public String userName;
+
 }

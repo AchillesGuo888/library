@@ -63,7 +63,7 @@ public class UserRegisterServiceImpl implements UserRegisterService {
     BeanUtils.copyProperties(newUser, sessionUser);
     session.setAttribute("user", sessionUser); // put user info into session
     session.setMaxInactiveInterval(1800);
-    return RegisterResponse.builder().accessToken(token).build();
+    return RegisterResponse.builder().accessToken(token).userName(newUser.getUserName()).build();
   }
 
 

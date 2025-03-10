@@ -4,36 +4,24 @@ package com.example.library.service.impl.user;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.example.library.common.base.ResponseCode;
-import com.example.library.dto.SessionUser;
 import com.example.library.dto.request.ForgetPasswordRequestDTO;
 import com.example.library.dto.request.ModifyUserInfoRequestDTO;
 import com.example.library.dto.request.PasswordModifyRequestDTO;
-import com.example.library.dto.request.UserLoginRequestDTO;
-import com.example.library.dto.response.RegisterResponse;
 import com.example.library.dto.response.UpdateInfoResponse;
-import com.example.library.dto.response.UserInfoResponse;
 import com.example.library.entity.UserInfo;
 import com.example.library.entity.UserInfoExample;
 import com.example.library.exception.BizException;
 import com.example.library.mapper.UserInfoMapper;
-import com.example.library.service.auth.AbstractAuth;
-import com.example.library.service.auth.Auth4EmailPasswordMatch;
 import com.example.library.service.user.UserModifyService;
-import com.example.library.service.user.UserService;
 import com.example.library.util.JwtUtil;
 import com.example.library.util.Md5Util;
 import com.example.library.util.UserUtil;
 import com.example.library.util.ValidateUtils;
 import com.example.library.util.VerificationCodeUtil;
-import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 
@@ -74,19 +62,21 @@ public class UserModifyServiceImpl implements UserModifyService {
   }
 
   @Override
-  public UpdateInfoResponse modifyPassword(PasswordModifyRequestDTO requestDTO)
+  public UpdateInfoResponse modifyPassword(String token,
+      PasswordModifyRequestDTO requestDTO)
       throws BizException {
     /**
      * 1.check parameter
      */
-    String email = requestDTO.getEmail();
+
     String newPassword = requestDTO.getNewPassword();
     String oldPassword = requestDTO.getOldPassword();
-    checkParams(email,newPassword,oldPassword);
+    checkParams(newPassword,oldPassword);
 
 
     // query user info
-    UserInfo user = userUtil.findUserByEmail(requestDTO.getEmail());
+    String userId = jwtUtil.getUserIdFromToken(token);
+    UserInfo user = userUtil.findUserByUserId(userId);
     if (user == null) {
       throw new BizException(ResponseCode.email_not_exist);
     }
@@ -94,7 +84,6 @@ public class UserModifyServiceImpl implements UserModifyService {
     /**
      * 2.check old password
      */
-    String userId = user.getUserId();
     String salt = user.getSalt();
     String passwordInDb = user.getPassword();
     String oldPasswordInDb = Md5Util.getSaltMd5AndSha(oldPassword, salt);
@@ -108,11 +97,8 @@ public class UserModifyServiceImpl implements UserModifyService {
     return UpdateInfoResponse.builder().result(true).build();
   }
 
-  private void checkParams(String email, String newPassword, String oldPassword) throws BizException {
+  private void checkParams(String newPassword, String oldPassword) throws BizException {
 
-    if (StrUtil.isBlank(email)) {
-      throw new BizException(ResponseCode.email_error_rules);
-    }
     if (StrUtil.isBlank(oldPassword)) {
       throw new BizException(ResponseCode.password_old_error_rules);
     }

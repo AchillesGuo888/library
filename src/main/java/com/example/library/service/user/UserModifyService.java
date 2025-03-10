@@ -4,12 +4,8 @@ package com.example.library.service.user;
 import com.example.library.dto.request.ForgetPasswordRequestDTO;
 import com.example.library.dto.request.ModifyUserInfoRequestDTO;
 import com.example.library.dto.request.PasswordModifyRequestDTO;
-import com.example.library.dto.request.UserLoginRequestDTO;
-import com.example.library.dto.response.RegisterResponse;
 import com.example.library.dto.response.UpdateInfoResponse;
-import com.example.library.dto.response.UserInfoResponse;
 import com.example.library.exception.BizException;
-import javax.servlet.http.HttpServletRequest;
 
 
 public interface UserModifyService {
@@ -26,11 +22,13 @@ public interface UserModifyService {
 
   /**
    * modify user password
+   *
+   * @param token
    * @param requestDTO
    * @return
    * @throws BizException
    */
-  UpdateInfoResponse modifyPassword(PasswordModifyRequestDTO requestDTO) throws BizException;
+  UpdateInfoResponse modifyPassword(String token, PasswordModifyRequestDTO requestDTO) throws BizException;
 
   /**
    * user forget password

@@ -1,160 +1,59 @@
 <!DOCTYPE html>
-
 <html>
 <head>
-  <style>
-    .title {
-      width: 96px;
-      height: 33px;
-      font-size: 24px;
-      font-family: PingFangSC-Medium, PingFang SC;
-      font-weight: 500;
-      color: rgba(103, 105, 110, 1);
-      line-height: 33px;
-    }
-
-    .hi {
-      width: 362px;
-      height: 22px;
-      font-size: 16px;
-      font-family: PingFangSC-Regular, PingFang SC;
-      font-weight: 400;
-      color: rgba(103, 105, 110, 1);
-      line-height: 22px;
-      margin-top: 30px;
-    }
-
-    .mainContent {
-      width: 440px;
-      height: 70px;
-      background: rgba(245, 246, 247, 1);
-      margin-top: 10px;
-      padding: 20px;
-    }
-
-    .account {
-      width: 250px;
-      height: 22px;
-      font-size: 16px;
-      font-family: PingFangSC-Regular, PingFang SC;
-      font-weight: 400;
-      color: rgba(103, 105, 110, 1);
-      line-height: 22px;
-    }
-
-    .password {
-      width: 200px;
-      height: 22px;
-      font-size: 16px;
-      font-family: PingFangSC-Regular, PingFang SC;
-      font-weight: 400;
-      color: rgba(103, 105, 110, 1);
-      line-height: 22px;
-      margin-top: 20px;
-    }
-
-    .changepwd {
-      width: 250px;
-      height: 22px;
-      font-size: 16px;
-      font-family: PingFangSC-Regular, PingFang SC;
-      font-weight: 400;
-      color: rgba(103, 105, 110, 1);
-      line-height: 22px;
-      padding: 10px 10px 10px 0px;
-    }
-
-    .joinArea {
-      width: 144px;
-      height: 48px;
-      background: rgba(39, 143, 224, 1);
-      border-radius: 8px;
-    }
-
-    .join {
-      width: 64px;
-      height: 22px;
-      font-size: 16px;
-      font-family: PingFangSC-Regular, PingFang SC;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 1);
-      line-height: 22px;
-    }
-
-    .bottomLine {
-      width: 578px;
-      height: 1px;
-      background: rgba(228, 231, 233, 1);
-    }
-
-    .bottom {
-      width: 212px;
-      height: 17px;
-      font-size: 12px;
-      font-family: PingFangSC-Regular, PingFang SC;
-      font-weight: 400;
-      color: rgba(140, 144, 149, 1);
-      line-height: 17px;
-      margin-left: 40px;
-      margin-top: 30px;
-    }
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style type="text/css">
+    /* 邮件客户端安全样式 */
+    .ExternalClass, .ReadMsgBody { width: 100%; }
+    body { margin: 0; padding: 0; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table { border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
   </style>
 </head>
-<body>
-<div style="width:578px;height:547px;margin:20px auto;">
-  <div style="width:578px;height:80px;background:rgba(248,250,251,1);">
-    <div style="float:right;position: relative;width: 82%;padding-top: 10px;height: 80px;">
-      <div
-          style="font-size:18px;font-family:Avenir-Heavy,Avenir;font-weight:800;color:rgba(37,39,43,1);width:80px;height:25px;line-height:25px;">
-        UL Hotel Group co., ltd
-      </div>
-      <div
-          style="width:72px;height:25px;font-size:18px;font-family:PingFangSC-Medium,PingFang SC;font-weight:500;color:rgba(37,39,43,1);line-height:25px;">
-        International Booking Platform
-      </div>
+<body style="margin: 0; padding: 20px 0; background: #f8fafb;">
+<!--[if (gte mso 9)|(IE)]>
+<table width="600" align="center"><tr><td>
+<![endif]-->
+<div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 8px;">
+  <!-- 头部 -->
+  <div style="padding: 20px; background: #f8fafb; border-radius: 8px 8px 0 0;">
+    <div style="text-align: right;">
+      <div style="font-size: 18px; font-weight: 800; color: #25272b;">UL Hotel Group co., ltd</div>
+      <div style="font-size: 16px; color: #66686d;">International Booking Platform</div>
     </div>
   </div>
-  <div style="margin-left:40px;margin-top:30px">
-    <div class="title" style="width:96px;
-            height:33px;
-            font-size:24px;
-            font-family:PingFangSC-Medium,PingFang SC;
-            font-weight:500;
-            color:rgba(103,105,110,1);
-            line-height:33px;">Verification
+
+  <!-- 内容区 -->
+  <div style="padding: 40px;">
+    <div style="font-size: 24px; color: #67696e; margin-bottom: 30px;">Verification</div>
+
+    <div style="font-size: 16px; color: #67696e; margin-bottom: 20px;">
+      Your verification code follows：
     </div>
-    <div class="hi" style="width:362px;
-            height:22px;
-            font-size:16px;
-            font-family:PingFangSC-Regular,PingFang SC;
-            font-weight:400;
-            color:rgba(103,105,110,1);
-            line-height:22px;
-            margin-top: 30px;">Your verification code follows：
-    </div>
-    <div class="mainContent" style=" width:440px;
-            height:25px;
-            background:rgba(245,246,247,1);
-            margin-top:10px;
-            padding:20px;">
-      <div class="account" style="width:400px;
-            height:22px;
-            font-size:16px;
-            font-family:PingFangSC-Regular,PingFang SC;
-            font-weight:400;
-            color:rgba(103,105,110,1);
-            line-height:22px;">
-        <span style="width:100%">Code：</span>
-        <span style="color:#278FE0">${code}</span>
+
+    <!-- 验证码区域 -->
+    <div style="background: #f5f6f7; padding: 20px; border-radius: 8px;">
+      <div style="font-size: 24px; color: #278fe0; letter-spacing: 3px;">
+          ${code}
       </div>
     </div>
-    <div style="height:20px"></div>
 
+    <!-- 有效期提示 -->
+    <div style="color: #8c9095; font-size: 12px; margin-top: 20px;">
+      * This code will expire in 10 minutes
+    </div>
   </div>
-  <div class="bottomLine" style="width:578px;
-            height:1px;
-            background:rgba(228,231,233,1);margin-top:20px"></div>
 
+  <!-- 底部 -->
+  <div style="border-top: 1px solid #e4e7e9; padding: 20px; text-align: center;">
+    <div style="color: #8c9095; font-size: 12px;">
+      UL Hotel Group co., ltd | security@example.com
+    </div>
+  </div>
 </div>
+<!--[if (gte mso 9)|(IE)]>
+</td></tr></table>
+<![endif]-->
 </body>
 </html>

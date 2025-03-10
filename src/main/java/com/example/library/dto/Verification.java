@@ -11,6 +11,7 @@ import lombok.Data;
  */
 
 public class Verification {
+  private static final long serialVersionUID = 1L;
 
   public String code;
   private LocalDateTime createTime;

@@ -20,6 +20,7 @@
     </developer>
   </developers>
 
+
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
@@ -31,8 +32,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>1.8</java.version>
-    <druid.version>1.1.10</druid.version>
-    <lombok.version>1.18.2</lombok.version>
+    <druid.version>1.1.21</druid.version>
+    <lombok.version>1.18.24</lombok.version>
     <commons-lang3.version>3.8</commons-lang3.version>
     <hutool-all.version>4.1.13</hutool-all.version>
   </properties>
@@ -82,14 +83,14 @@
     <dependency>
       <groupId>org.mybatis.spring.boot</groupId>
       <artifactId>mybatis-spring-boot-starter</artifactId>
-      <version>2.1.0</version>
+      <version>2.1.0</version>  <!-- 与 Spring Boot 2.1.7.RELEASE 兼容 -->
     </dependency>
 
-    <!-- MyBatis 3.5.x  -->
+    <!-- MyBatis 3.5.x 版本 -->
     <dependency>
       <groupId>org.mybatis</groupId>
       <artifactId>mybatis</artifactId>
-      <version>3.5.3</version>
+      <version>3.5.3</version>  <!-- 与 Spring Boot 2.1.x 兼容 -->
     </dependency>
 
     <!-- mysql-->
@@ -99,6 +100,8 @@
       <scope>runtime</scope>
     </dependency>
 
+
+    <!-- druid数据源 -->
     <dependency>
       <groupId>com.alibaba</groupId>
       <artifactId>druid-spring-boot-starter</artifactId>
@@ -120,6 +123,8 @@
       <scope>provided</scope>
     </dependency>
 
+
+    <!-- commons-lang3工具包 -->
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
@@ -127,9 +132,21 @@
     </dependency>
 
     <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-pool2</artifactId>
+      <version>2.11.1</version> <!-- 替换为最新版本 -->
+    </dependency>
+
+    <!-- hutool工具包 -->
+    <dependency>
       <groupId>cn.hutool</groupId>
       <artifactId>hutool-all</artifactId>
-      <version>${hutool-all.version}</version>
+      <version>5.1.4</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.mail</groupId>
+      <artifactId>mail</artifactId>
+      <version>1.4.7</version>
     </dependency>
 
     <dependency>
@@ -138,6 +155,7 @@
       <optional>true</optional>
     </dependency>
 
+    <!--序列化-->
     <dependency>
       <groupId>com.alibaba</groupId>
       <artifactId>fastjson</artifactId>
@@ -150,19 +168,15 @@
       <version>26.0-jre</version>
     </dependency>
 
-    <dependency>
-      <groupId>redis.clients</groupId>
-      <artifactId>jedis</artifactId>
-      <version>2.9.0</version>
-    </dependency>
 
-
+    <!--Shiro-->
     <dependency>
       <groupId>org.apache.shiro</groupId>
       <artifactId>shiro-spring</artifactId>
       <version>1.4.0</version>
     </dependency>
 
+    <!--thymeleaf-shiro-extras-->
     <dependency>
       <groupId>com.github.theborakompanioni</groupId>
       <artifactId>thymeleaf-extras-shiro</artifactId>
@@ -174,7 +188,7 @@
       <version>2.8.5</version>
     </dependency>
 
-    <!-- email -->
+    <!-- 邮件 -->
     <dependency>
       <groupId>io.github.biezhi</groupId>
       <artifactId>oh-my-email</artifactId>
@@ -227,6 +241,12 @@
       <version>1.6.2</version>
     </dependency>
 
+<!--    <dependency>-->
+<!--      <groupId>javax.xml.bind</groupId>-->
+<!--      <artifactId>jaxb-api</artifactId>-->
+<!--      <version>2.3.1</version>-->
+<!--    </dependency>-->
+
     <dependency>
       <groupId>commons-codec</groupId>
       <artifactId>commons-codec</artifactId>
@@ -257,23 +277,29 @@
 <!--      <groupId>org.springframework.cloud</groupId>-->
 <!--      <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>-->
 <!--    </dependency>-->
-    <!-- gateway-->
 
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.cloud</groupId>-->
-<!--      <artifactId>spring-cloud-starter-gateway</artifactId>-->
-<!--    </dependency>-->
 
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.boot</groupId>-->
-<!--      <artifactId>spring-boot-starter-webflux</artifactId>-->
-<!--    </dependency>-->
 
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-configuration-processor</artifactId>
       <optional>true</optional>
     </dependency>
+
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-starter-actuator</artifactId>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.cloud</groupId>-->
+<!--      <artifactId>spring-cloud-starter-openfeign</artifactId>-->
+<!--    </dependency>-->
+
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-starter-data-jpa</artifactId>-->
+<!--      <version>2.3.10.RELEASE</version>-->
+<!--    </dependency>-->
 
   </dependencies>
 
@@ -293,6 +319,23 @@
 
   <build>
     <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version> <!-- 替换为最新版本 -->
+        <configuration>
+          <source>8</source> <!-- 替换为你的 Java 版本 -->
+          <target>8</target>
+          <annotationProcessorPaths>
+            <path>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+              <version>1.18.30</version> <!-- 替换为 Lombok 版本 -->
+            </path>
+          </annotationProcessorPaths>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
@@ -325,8 +368,5 @@
     </plugins>
   </build>
 
-
 </project>
-
-
 

@@ -92,7 +92,7 @@ public class UserController {
       @RequestHeader("Authorization") String token,
       @ApiParam(value = "modify user password", required = true) @RequestBody PasswordModifyRequestDTO requestDTO) {
     try {
-      return ResponseResult.ofSuccess(userModifyService.modifyPassword(requestDTO));
+      return ResponseResult.ofSuccess(userModifyService.modifyPassword(token,requestDTO));
     } catch (BizException e) {
       log.error("modify password error", e);
       return ResponseResult.ofError(e.getCode().getCode(), e.getMessage());

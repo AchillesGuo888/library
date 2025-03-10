@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
       session.setMaxInactiveInterval(1800);
     }
 
-    return RegisterResponse.builder().accessToken(token).build();
+    return RegisterResponse.builder().accessToken(token).userName(auth.getCurrentUser().getUserName()).build();
   }
 
   private AbstractAuth getAuth(UserLoginRequestDTO requestDTO) throws BizException {

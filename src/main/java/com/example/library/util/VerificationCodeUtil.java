@@ -74,7 +74,8 @@ public class VerificationCodeUtil {
     });
     //store verification code in session
     if (session != null) {
-      session.setAttribute("cs5721_" + requestDTO.getEmail(),
+      System.out.println("Session ID: " + session.getId());
+      session.setAttribute("CS5722_" + requestDTO.getEmail(),
           Verification.builder().code(verificationCode).createTime(
               LocalDateTime.now()).build());
     }
@@ -82,7 +83,8 @@ public class VerificationCodeUtil {
 
   public Boolean verifyCode(String code, String email) {
     HttpSession session = getCurrentSession();
-    Verification verification = (Verification) session.getAttribute("cs5721_" + email);
+    System.out.println("Session ID: " + session.getId());
+    Verification verification = (Verification) session.getAttribute("CS5722_" + email);
     LocalDateTime generatedTime =verification.getCreateTime();
 
     // check verification exists

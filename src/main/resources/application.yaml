@@ -17,7 +17,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     #MySql配置
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/Libary?serverTimezone=Europe/Dublin&characterEncoding=utf8&useSSL=false&allowMultiQueries=true
+    url: jdbc:mysql://localhost:3306/Library?serverTimezone=Europe/Dublin&characterEncoding=utf8&useSSL=false&allowMultiQueries=true
     username: root
     password: 123456
   thymeleaf:
@@ -67,10 +67,10 @@ shiro:
 
 
 mail:
-  host: smtp.exmail.qq.com
+  host: smtp.qq.com
   from: 1483503963@qq.com
   user: 1483503963@qq.com
-  pass: 89gr@@39
+  pass: lmabgfwgzbowhaga
   port: 465
   sslEnable: true
   socketFactoryClass: javax.net.ssl.SSLSocketFactory
