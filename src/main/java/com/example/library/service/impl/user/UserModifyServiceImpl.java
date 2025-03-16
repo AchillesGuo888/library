@@ -11,6 +11,7 @@ import com.example.library.dto.response.UpdateInfoResponse;
 import com.example.library.entity.UserInfo;
 import com.example.library.entity.UserInfoExample;
 import com.example.library.exception.BizException;
+import com.example.library.exception.NoRollbackException;
 import com.example.library.mapper.UserInfoMapper;
 import com.example.library.service.user.UserModifyService;
 import com.example.library.util.JwtUtil;
@@ -23,6 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
@@ -36,6 +38,7 @@ public class UserModifyServiceImpl implements UserModifyService {
   private final VerificationCodeUtil verificationCodeUtil;
 
   @Override
+  @Transactional(rollbackFor = Exception.class, noRollbackFor = NoRollbackException.class)
   public UpdateInfoResponse updateUserInfo(ModifyUserInfoRequestDTO requestDTO, String token)
       throws BizException {
     String userId = jwtUtil.getUserIdFromToken(token);
@@ -62,6 +65,7 @@ public class UserModifyServiceImpl implements UserModifyService {
   }
 
   @Override
+  @Transactional(rollbackFor = Exception.class, noRollbackFor = NoRollbackException.class)
   public UpdateInfoResponse modifyPassword(String token,
       PasswordModifyRequestDTO requestDTO)
       throws BizException {
@@ -127,6 +131,7 @@ public class UserModifyServiceImpl implements UserModifyService {
   }
 
   @Override
+  @Transactional(rollbackFor = Exception.class, noRollbackFor = NoRollbackException.class)
   public UpdateInfoResponse forgetPassword(ForgetPasswordRequestDTO requestDTO)
       throws BizException {
     UserInfo user = userUtil.findUserByEmail(requestDTO.getEmail());

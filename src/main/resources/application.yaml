@@ -15,7 +15,7 @@ spring:
     rollback-on-commit-failure: true
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    #MySql配置
+    #MySql
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/Library?serverTimezone=Europe/Dublin&characterEncoding=utf8&useSSL=false&allowMultiQueries=true
     username: root
